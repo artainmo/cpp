@@ -40,7 +40,20 @@ public:
     std::cout << "Because stack memory was used automatic destruction of objects when going out of scope(function)" << std::endl;
   }
 
-  void show(char str[8][11], int max);
+  void show(char str[8][11], int max)
+  {
+    int i;
+    int width;
+
+    i = 0;
+    while (i < max)
+    {
+      width = 11 - strlen(str[i]);
+      std::cout << str[i] << std::setw(width) << std::setfill(' ') << "|";
+      i++;
+    }
+    std::cout << std::endl;
+  }
 
   void add()
   {
@@ -147,21 +160,6 @@ public:
       std::cout << "Darkest secet : " << contact->darkest_secret << std::endl;
   }
 };
-
-void phonebook::show(char str[8][11], int max)
-{
-  int i;
-  int width;
-
-  i = 0;
-  while (i < max)
-  {
-    width = 11 - strlen(str[i]);
-    std::cout << str[i] << std::setw(width) << std::setfill(' ') << "|";
-    i++;
-  }
-  std::cout << std::endl;
-}
 
 int main()
 {

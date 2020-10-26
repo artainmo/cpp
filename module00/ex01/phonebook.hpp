@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK
-#define PHONEBOOK
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 #include <string>
 #include <iostream>
@@ -9,8 +9,9 @@
 #include <cctype>
 #include <locale>
 
-typedef struct contact
+class cont //In the end same as structure all contained variables are public
 {
+public:
   char first_name[11];
   char last_name[11];
   char nickname[11];
@@ -22,9 +23,9 @@ typedef struct contact
   char favorite_meal[11];
   char underwear_color[11];
   char darkest_secret[11];
-  struct contact *head;
-  struct contact *next;
-}cont;
+  cont *head;
+  cont *next;
+};
 
 
 #endif
