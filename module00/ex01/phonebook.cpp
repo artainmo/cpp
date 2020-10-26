@@ -40,7 +40,7 @@ public:
     std::cout << "Because stack memory was used automatic destruction of objects when going out of scope(function)" << std::endl;
   }
 
-  void show(char str[8][11], int max)
+  void show(char str[8][20], int max)
   {
     int i;
     int width;
@@ -48,8 +48,11 @@ public:
     i = 0;
     while (i < max)
     {
-      width = 11 - strlen(str[i]);
-      std::cout << str[i] << std::setw(width) << std::setfill(' ') << "|";
+      width = 10 - strlen(str[i]);
+      if (str[i][9] != 0)
+        str[i][9] = '.';
+      str[i][10] = 0;
+      std::cout << std::setw(10) << str[i] << "|"; //Setw is a stream modifier that sets the width of following string
       i++;
     }
     std::cout << std::endl;
@@ -71,27 +74,27 @@ public:
       }
     }
     std::cout << "First name" << std::endl;
-    std::cin >> std::setw(11) >> contact->first_name;
+    std::cin >> std::setw(20) >> contact->first_name;
     std::cout << "Last name" << std::endl;
-    std::cin >> std::setw(11) >> contact->last_name;
+    std::cin >> std::setw(20) >> contact->last_name;
     std::cout << "Nickname" << std::endl;
-    std::cin >> std::setw(11) >>  contact->nickname;
+    std::cin >> std::setw(20) >>  contact->nickname;
     std::cout << "Login" << std::endl;
-    std::cin >> std::setw(11) >> contact->login;
+    std::cin >> std::setw(20) >> contact->login;
     std::cout << "Postal address" << std::endl;
-    std::cin >> std::setw(11) >> contact->postal_address;
+    std::cin >> std::setw(20) >> contact->postal_address;
     std::cout << "Email address" << std::endl;
-    std::cin >> std::setw(11) >> contact->email_address;
+    std::cin >> std::setw(20) >> contact->email_address;
     std::cout << "Phone number" << std::endl;
-    std::cin >> std::setw(11) >> contact->phone_number;
+    std::cin >> std::setw(20) >> contact->phone_number;
     std::cout << "Birthday date" << std::endl;
-    std::cin >> std::setw(11) >> contact->birthday_date;
+    std::cin >> std::setw(20) >> contact->birthday_date;
     std::cout << "Favorite meal" << std::endl;
-    std::cin >> std::setw(11) >> contact->favorite_meal;
+    std::cin >> std::setw(20) >> contact->favorite_meal;
     std::cout << "Underwear color" << std::endl;
-    std::cin >> std::setw(11) >> contact->underwear_color;
+    std::cin >> std::setw(20) >> contact->underwear_color;
     std::cout << "Darkest secret" << std::endl;
-    std::cin >> std::setw(11) >> contact->darkest_secret;
+    std::cin >> std::setw(20) >> contact->darkest_secret;
     contact->head = &contact1;
   }
 
@@ -102,9 +105,9 @@ public:
       int all_max;
       int index[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
       char input[1];
-      char first_name[8][11];
-      char last_name[8][11];
-      char nickname[8][11];
+      char first_name[8][20];
+      char last_name[8][20];
+      char nickname[8][20];
 
       i = 0;
       while (contact != nullptr && contact->head != nullptr)
@@ -120,9 +123,9 @@ public:
       std::cout << "Number of contacts " << all_max << std::endl;
       i = 0;
       std::cout << "index :     ";
-      while (index[i] != -1 && i != 4)
+      while (index[i] != -1 && i != 8)
       {
-        std::cout << index[i] << std::setw(10) << std::setfill(' ') << "|";
+        std::cout << std::setw(10) << index[i] << "|";
         i++;
       }
       std::cout << std::endl;

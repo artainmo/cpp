@@ -1,5 +1,5 @@
 # module00
-# https://cdn.intra.42.fr/pdf/pdf/13806/en.subject.pdf
+# make
 # module01
 # https://cdn.intra.42.fr/pdf/pdf/13845/en.subject.pdf
 # module02
@@ -18,7 +18,7 @@
 # https://cdn.intra.42.fr/pdf/pdf/13180/en.subject.pdf
 
 Verified
-1 - contacts with long name - last char is equal to . And accept longer names
+1 - contacts with long name - last char is equal to . And accept longer names - show all contacts
 2
 3
 4
