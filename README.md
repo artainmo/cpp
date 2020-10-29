@@ -18,7 +18,7 @@
 # https://cdn.intra.42.fr/pdf/pdf/13180/en.subject.pdf
 
 Verified
-1 - Second exercise, check error cases multiple word contact input, phone number only numbers, private members
+1 - Second exercise, ADD contact - empty entries and obviously false entries + recheck everything
 2
 3
 4
