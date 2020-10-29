@@ -18,7 +18,7 @@ static std::string random_name()
 ZombieHorde::ZombieHorde(int N)
 :N(N)
 {
-  horde = new Zombie[N];
+  horde = new Zombie[N]; //Use [number] to allocate a list of objects in the heap
   int i;
 
   for (i = -1; i < N; i++)
@@ -28,7 +28,7 @@ ZombieHorde::ZombieHorde(int N)
 ZombieHorde::~ZombieHorde()
 {
   std::cout << "___Destructing the zombie horde___" << std::endl;
-  delete [] horde;
+  delete [] horde; // Use [] to delete/free a list of objects
 }
 
 void ZombieHorde::announce()

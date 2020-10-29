@@ -14,7 +14,7 @@ protected:
 public:
   Enemy(int hp, std::string const & type);
   virtual ~Enemy();
-  //Deleting a parent class through a pointer on the chile class leads to an error a compilation
+  //Deleting a parent class through a pointer on the child class leads to an error at compilation
   //the solution is to use the virtual keyword on the destructor of the parent class
 
   std::string const getType() const;

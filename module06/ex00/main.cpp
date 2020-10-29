@@ -26,7 +26,7 @@ void type_conversions_nums(long double const &biggest_type)
 	else
 		std::cout <<  "float : " << std::fixed << std::setprecision(1) << static_cast<float>(biggest_type) << "f" << std::endl; //std::fixed combined with std::setprecsion can change the precion of fractions in cout stream
 	std::cout <<  "double : " << std::fixed << std::setprecision(1) << static_cast<double>(biggest_type) << std::endl;
-	//"literal must belong to one of the following a scalar types: char, int, float or double" -> so no everflow possible on double cast
+	//"literal must belong to one of the following a scalar types: char, int, float or double" -> so no overflow possible on double cast
 }
 
 bool scalar_test(std::string const &arg)

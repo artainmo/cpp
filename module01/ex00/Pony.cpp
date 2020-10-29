@@ -19,6 +19,7 @@ void ponyOnTheHeap()
   std::cout << "HEAP"<< std::endl << pony_heap->weight << std::endl;
   delete pony_heap;
 }
+//Free the object that sits on the heap
 
 void ponyOnTheStack()
 {
@@ -26,3 +27,4 @@ void ponyOnTheStack()
 
   std::cout << "STACK" << std::endl << pony_stack.weight <<std::endl;
 }
+//Do not free static object as it gets destroyed automatically when going out of scope function

@@ -28,6 +28,7 @@ void identify_from_pointer(Base * p)
   else if (dynamic_cast<C *>(p) != nullptr)
     std::cout << "Identify from pointer: C" << std::endl;
 }//dynamic_cast is very practical for polymorphic classes, to detect what child class a class is, it will return a nullptr if cast is considered faulty
+//Polymorphic classes are base classes that can take up many forms through child classes
 
 void identify_from_reference(Base &p)
 {

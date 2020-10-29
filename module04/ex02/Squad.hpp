@@ -20,7 +20,7 @@ public:
   Squad();
   ~Squad();
   Squad(Squad const &to_copy);
-  //A shallow copy has pointers pointing on same memory adress while a deep copy has pointers pointing  on different memory adress
+  //A shallow copy has pointers pointing on same memory adress while a deep copy has pointers pointing on different memory adress
   void operator=(Squad const &to_copy);
   int getCount() const;
   ISpaceMarine* getUnit(int) const;

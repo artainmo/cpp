@@ -30,6 +30,7 @@ class AWeapon
     virtual void attack() const = 0;
     //Virtual means child classes with same function name override this function
     // = 0 makes it a pure virtual function or abstract function, they only need to be declared and create errors when child classes do not override this function
+    //Without the = 0, the function gets overriden only if it exists but does not have to be
 };
 
 #endif

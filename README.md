@@ -18,7 +18,7 @@
 # https://cdn.intra.42.fr/pdf/pdf/13180/en.subject.pdf
 
 Verified
-1 - contacts with long name - last char is equal to . And accept longer names - show all contacts
+1 - Second exercise, check error cases multiple word contact input, phone number only numbers, private members
 2
 3
 4

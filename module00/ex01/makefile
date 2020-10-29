@@ -1,10 +1,7 @@
 all:
-	clang++ -Wall -Wextra -Werror phonebook.cpp
-	mv a.out phonebook
+	clang++ -Wall -Wextra -Werror phonebook.cpp -o phonebook
 
+fclean:
+	rm -rf phonebook
 
-clean:
-		rm -f phonebook
-
-
-re:clean all
+re: fclean all

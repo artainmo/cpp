@@ -22,7 +22,7 @@ public:
   void recoverAP();
   void equip(AWeapon*);
   void attack(Enemy*);
-  std::string const getName() const;
+  std::string const getName() const; //first const meaning the return value is constant and second const meaning the values in class do not change by function
   int getAP() const;
   AWeapon *getWeapon() const;
 };

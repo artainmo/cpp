@@ -7,7 +7,7 @@
 #include <fstream>
 
 #define DEBUG 1
-#if DEBUG == 1
+#if DEBUG == 1 //To activate or deactivate the define P()
 #define P(x) std::cout << x << std::endl
 #endif
 

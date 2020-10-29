@@ -7,7 +7,7 @@ void memoryLeak()
   std::cout << *panther << std::endl;
   delete panther;
 }
-
+//Fix mem leak by delete (freeing memory) of heap allocated object
 
 int main()
 {

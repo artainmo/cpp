@@ -76,7 +76,7 @@ int main()
   P("===Show data===");
   std::cout << "s1 : " << data->s1 << std::endl;
   std::cout << "n : " << data->n << std::endl;
-  std::cout << "s1 : " << data->s2 << std::endl;
+  std::cout << "s2 : " << data->s2 << std::endl;
   P("===Freeing data===");
   delete data; //Freeing the malloced data struct
 

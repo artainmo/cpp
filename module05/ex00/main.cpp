@@ -19,4 +19,4 @@ int main()
   std::cout << *bob;
 }
 
-//Highest rade is 1 and lowest grade is 150!!
+//Highest grade is 1 and lowest grade is 150!!
