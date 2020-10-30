@@ -18,8 +18,8 @@
 # https://cdn.intra.42.fr/pdf/pdf/13180/en.subject.pdf
 
 Verified
-1 - Second exercise, ADD contact - empty entries and obviously false entries + recheck everything
-2
+1 --
+2 -
 3
 4
 5
