@@ -1,7 +1,7 @@
 all:
 	clang++  -Wall -Wextra -Werror main.cpp Zombie.cpp ZombieHorde.cpp
 
-clean:
+fclean:
 	rm -f a.out
 
-re: clean all
+re: fclean all

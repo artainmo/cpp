@@ -9,7 +9,8 @@ public:
   std::string name;
   //(A reference cannot get initialized with null, so when not initialized with constructor problem occur that pointer can resolve)
   //A refernce cannot hold a nullptr because it is a constant
-  Weapon *weapon;
+  //HumanA takes weapon directly in constructor, so no null value initialization necessary, so reference can be used
+  Weapon &weapon; //Used to take in given address like a pointer would, but in the stack instead of heap
 
   HumanA(std::string name, Weapon &weapon);
   void attack();

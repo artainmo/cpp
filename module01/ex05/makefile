@@ -1,7 +1,7 @@
 all:
 	clang++  -Wall -Wextra -Werror Brain.cpp main.cpp Human.cpp
 
-clean:
+fclean:
 	rm -f a.out
 
-re: clean all
+re: fclean all

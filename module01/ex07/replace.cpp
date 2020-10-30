@@ -13,13 +13,14 @@ static std::string new_filename(std::string filename)
   return new_filename;
 }
 
+//File descriptors in cpp
 //ofstream -> out file, create and write
 //ifstream -> in file, read
 //fstream -> Read, write and create
 int main(int argc, char **argv)
 {
-  std::ifstream file_read(argv[1]);
-  std::ofstream new_file(new_filename(std::string(argv[1])));
+  std::ifstream file_read;
+  std::ofstream new_file;
   char character;
 
   if (argc != 4)
@@ -27,6 +28,13 @@ int main(int argc, char **argv)
     std::cout << "Wrong number of arguments" << std::endl;
     return 1;
   }
+  file_read.open(argv[1]);
+  if (file_read.good() == false) //Checking if opening went correctly
+  {
+    std::cout << "File does not exist" << std::endl;
+    return 1;
+  }
+  new_file.open(new_filename(std::string(argv[1])));
   while((file_read.get(character)) != 0)
   {
     if (character != argv[2][0])
@@ -53,4 +61,6 @@ int main(int argc, char **argv)
   }
   file_read.close();
   new_file.close();
+  return 0;
 }
+//Use ./replace file.txt has hes, as test

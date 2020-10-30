@@ -1,10 +1,7 @@
 all:
-	clang++ -Wall -Wextra -Werror replace.cpp
-	mv a.out replace
-	./replace "file.txt" "has" "hes"
-	cat file.replace
+	clang++ -Wall -Wextra -Werror replace.cpp -o replace
 
-clean:
-	 rm -f replace file.replace
+fclean:
+	 rm -f replace *.replace
 
-re: clean all
+re: fclean all

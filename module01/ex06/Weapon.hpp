@@ -13,7 +13,7 @@ public:
   std::string type;
 
   Weapon(std::string);
-  const std::string getType();
+  const std::string &getType(); //Return const reference instead of copy to go faster
   void setType(std::string);
 };
 

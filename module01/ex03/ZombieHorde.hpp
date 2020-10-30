@@ -4,6 +4,7 @@
 #include "Zombie.hpp"
 #include <iostream>
 #include <string>
+#include <unistd.h> //Sleep function
 
 class ZombieHorde
 {

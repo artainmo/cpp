@@ -31,5 +31,5 @@ void randomChump()
   std::string name = random_name();
 
   Zombie zomb = Zombie(name, "big");
-  std::cout << "Hello I am the randomly generated zombie called :" << zomb.name << std::endl;
+  std::cout << "Hello I am the randomly generated zombie called: " << zomb.name << std::endl;
 }

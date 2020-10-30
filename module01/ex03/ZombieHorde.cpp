@@ -21,8 +21,11 @@ ZombieHorde::ZombieHorde(int N)
   horde = new Zombie[N]; //Use [number] to allocate a list of objects in the heap
   int i;
 
-  for (i = -1; i < N; i++)
+  for (i = 0; i < N; i++)
+  {
+    sleep(1); //Randomness is based on time, to avoid them all having the same name use sleep
     horde[i].Zombie_set(random_name(), "big");
+  }
 }
 
 ZombieHorde::~ZombieHorde()

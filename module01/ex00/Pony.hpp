@@ -9,15 +9,18 @@ void ponyOnTheStack();
 
 class Pony
 {
-public:
+private:
   std::string name;
   std::string height;
   std::string lenght;
   std::string weight;
   std::string speed;
 
+public:
   Pony(std::string name, std::string height, std::string lenght, std::string weight, std::string speed);
   ~Pony();
+
+  void show_content();
 };
 
 

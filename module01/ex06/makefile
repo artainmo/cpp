@@ -1,7 +1,7 @@
 all:
 	clang++ -Wall -Wextra -Werror main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
-clean:
+fclean:
 	rm -f a.out
 
-re: clean all
+re: fclean all

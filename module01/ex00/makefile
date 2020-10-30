@@ -1,7 +1,7 @@
 all:
 	clang++ -Wall -Wextra -Werror Pony.cpp main.cpp
 
-clean:
-	rm a.out
+fclean:
+	rm -f a.out
 
-re: clean all
+re: fclean all
