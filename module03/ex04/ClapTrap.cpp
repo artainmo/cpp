@@ -21,20 +21,20 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-  std::cout << "Away with thee! FR4G-TP " << name << " takes damage and loses " << amount << " points of damage " << std::endl;
+  std::cout << "Away with thee! FR4G-TP " << name << " takes damage and loses " << amount << " hit points" << std::endl;
   if ((int)amount > armor_damage_reduction)
   {
-    energy_points -= amount;
-    energy_points += armor_damage_reduction;
-    if (energy_points < 0)
-      energy_points = 0;
+    hit_points -= amount;
+    hit_points += armor_damage_reduction;
+    if (hit_points < 0)
+      hit_points = 0;
   }
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-  std::cout << "Hocus pocus! FR4G-TP " << name << " regenerates " << amount << "points of life " << std::endl;
-  energy_points += amount;
-  if (energy_points > max_energy_points)
-    energy_points = max_energy_points;
+  std::cout << "Hocus pocus! FR4G-TP " << name << " regenerates " << amount << " hit points" << std::endl;
+  hit_points += amount;
+  if (hit_points > max_hit_points)
+    hit_points = max_hit_points;
 }

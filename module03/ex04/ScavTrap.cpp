@@ -21,12 +21,12 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::rangedAttack(std::string const &target)
 {
-  std::cout << "Magic waits for no one, apprentice! " << name << " attacks " << target << " at range, causing "<< ranged_attack_damage << " points of damage " << std::endl;
+  std::cout << "Magic waits for no one, apprentice! " << name << " attacks " << target << " at range, causing "<< ranged_attack_damage << " points of damage" << std::endl;
 }
 
 void ScavTrap::meleeAttack(std::string const &target)
 {
-  std::cout << "Sooooo... how are things? " << name << " attacks " << target << " at melee, causing "<< melee_attack_damage << " points of damage " << std::endl;
+  std::cout << "Sooooo... how are things? " << name << " attacks " << target << " at melee, causing "<< melee_attack_damage << " points of damage" << std::endl;
 }
 
 void ScavTrap::challengeNewcomer()

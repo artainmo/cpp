@@ -7,8 +7,6 @@
 
 #define P(x) std::cout << x << std::endl
 
-//virtual keyword makes sure no ambiguity takes place, because child class takes in two claptrap classes as grand-parent,
-// virtual keyword makes sure to overwrite other similar classes
 class FragTrap : public virtual ClapTrap
 {
 public:

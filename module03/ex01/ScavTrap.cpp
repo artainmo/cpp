@@ -21,32 +21,32 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::rangedAttack(std::string const &target)
 {
-  std::cout << "Magic waits for no one, apprentice! " << name << " attacks " << target << " at range, causing "<< hit_points << " points of damage " << std::endl;
+  std::cout << "Magic waits for no one, apprentice! " << name << " attacks " << target << " at range, causing "<< ranged_attack_damage << " points of damage" << std::endl;
 }
 
 void ScavTrap::meleeAttack(std::string const &target)
 {
-  std::cout << "Sooooo... how are things? " << name << " attacks " << target << " at melee, causing "<< hit_points << " points of damage " << std::endl;
+  std::cout << "Sooooo... how are things? " << name << " attacks " << target << " at melee, causing "<< melee_attack_damage << " points of damage" << std::endl;
 }
 
 void ScavTrap::takeDamage(unsigned int amount)
 {
-  std::cout << "Ahhh! " << name << " takes damage and loses " << amount << " points of damage " << std::endl;
+  std::cout << "Ahhh! " << name << " takes damage and loses " << amount << " hit points" << std::endl;
   if ((int)amount > armor_damage_reduction)
   {
-    energy_points -= amount;
-    energy_points += armor_damage_reduction;
-    if (energy_points < 0)
-      energy_points = 0;
+    hit_points -= amount;
+    hit_points += armor_damage_reduction;
+    if (hit_points < 0)
+      hit_points = 0;
   }
 }
 
 void ScavTrap::beRepaired(unsigned int amount)
 {
-  std::cout << "BEST day of my life! " << name << " regenerates " << amount << "points of life " << std::endl;
-  energy_points += amount;
-  if (energy_points > max_energy_points)
-    energy_points = max_energy_points;
+  std::cout << "BEST day of my life! " << name << " regenerates " << amount << " hit points" << std::endl;
+  hit_points += amount;
+  if (hit_points > max_hit_points)
+    hit_points = max_hit_points;
 }
 
 void ScavTrap::challengeNewcomer()

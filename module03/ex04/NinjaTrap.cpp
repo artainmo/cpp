@@ -29,6 +29,8 @@ void NinjaTrap::meleeAttack(std::string const &target)
   std::cout << "Hey, best friend! FR4G-TP " << name << " attacks " << target << " at melee, causing "<< melee_attack_damage << " points of damage " << std::endl;
 }
 
+
+
 void NinjaTrap::ninjaShoebox(NinjaTrap const &target)
 {
   std::cout << "Take my shoe in your face! " << name << " attacks " << target.name << " with his shoe, causing "<< ranged_attack_damage << " points of damage " << std::endl;
