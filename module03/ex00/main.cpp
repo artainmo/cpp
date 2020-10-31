@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+#include <unistd.h> //For sleep function as randomness is based on time
 
 int main()
 {
@@ -16,18 +17,28 @@ int main()
   Robot.rangedAttack("Jack");
   Robot.meleeAttack("Benny");
   Robot.takeDamage(110);
-  std::cout << "Energy points: " << Robot.energy_points << std::endl;
+  std::cout << "Hit points: " << Robot.hit_points << std::endl;
   Robot.beRepaired(110);
-  std::cout << "Energy points: " << Robot.energy_points << std::endl;
-  P("Shield test");
+  std::cout << "Hit points: " << Robot.hit_points << std::endl;
+  P("~~Shield test~~");
   Robot.takeDamage(4);
-  std::cout << "Energy points: " << Robot.energy_points << std::endl;
+  std::cout << "Hit points: " << Robot.hit_points << std::endl;
   Robot.takeDamage(90);
-  std::cout << "Energy points: " << Robot.energy_points << std::endl;
+  std::cout << "Hit points: " << Robot.hit_points << std::endl;
   Robot.vaulthunter_dot_exe("Billy");
+  sleep(1);
   std::cout << "Energy points: " << Robot.energy_points << std::endl;
   Robot.beRepaired(56);
+  std::cout << "Hit points: " << Robot.hit_points << std::endl;
+  P("~~Energy points test~~"); //Energy points test
+  Robot.vaulthunter_dot_exe("Billy");
+  sleep(1);
   std::cout << "Energy points: " << Robot.energy_points << std::endl;
   Robot.vaulthunter_dot_exe("Billy");
+  sleep(1);
   std::cout << "Energy points: " << Robot.energy_points << std::endl;
+  Robot.vaulthunter_dot_exe("Billy");
+  sleep(1);
+  std::cout << "Energy points: " << Robot.energy_points << std::endl;
+  Robot.vaulthunter_dot_exe("Billy");
 }
