@@ -35,7 +35,7 @@ public:
 std::ostream &operator<<(std::ostream &ostream, const Fixed &f);
 //The function itoa that converts an int into a string can cause warnings and even compilation errors on different operating systems
 //That is why in c++11 we use std::to_string and before c++11 we use c++ streams, an integer can be put into a stream and the stream can be converted into a string
-//But here we simply make sure to be able to insert in std::cout or other stream object for example
+//But here we simply make sure to be able to insert in std::cout or other stream objects for example
 
 
 #endif

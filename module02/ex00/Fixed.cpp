@@ -15,9 +15,9 @@ Fixed::~Fixed()
 // So following getRawBits member function called line also missing
 // No use of assignment operator so not those lines in response
 Fixed::Fixed(const Fixed &to_copy)
-: fixed_point_value(to_copy.fixed_point_value)
 {
   P("Copy constructor called");
+  *this = to_copy; //This keyword refers to the object itself, here we simply call the assignation operator function
 }
 
 void Fixed::operator=(const Fixed &to_copy)
