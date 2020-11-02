@@ -20,7 +20,7 @@ public:
   Sorcerer(const Sorcerer &to_copy);
   void operator=(const Sorcerer &to_copy);
   void polymorph(Victim const &) const;
-  //polymorph function takes in Victim class, now all classes that have vitim as a parent can be given as parameter here
+  //polymorph function takes in Victim class, now all classes that have victim as a parent can be given as parameter here
 
 };
 

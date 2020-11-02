@@ -12,7 +12,6 @@ public:
   Victim(std::string name);
   ~Victim();
 
-  //Virtual keyword has only to be defined in the class definition
   //Virtual keyword makes sure this function gets overriden by same name function in child class if it exists
   virtual void getPolymorphed() const;
 };
