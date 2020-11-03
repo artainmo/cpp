@@ -20,7 +20,7 @@ public:
   void operator=(Character const &to_copy);
 
   void recoverAP();
-  void equip(AWeapon*);
+  void equip(AWeapon*); //Can take any child class of AWEAPON
   void attack(Enemy*);
   std::string const getName() const; //first const meaning the return value is constant and second const meaning the values in class do not change by function
   int getAP() const;

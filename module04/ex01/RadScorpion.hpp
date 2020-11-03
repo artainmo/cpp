@@ -3,7 +3,7 @@
 
 #include "Enemy.hpp"
 
-class RadScorpion : public Enemy
+class RadScorpion : public Enemy //Uses the takedamage virtual function from enemy
 {
 public:
   RadScorpion();

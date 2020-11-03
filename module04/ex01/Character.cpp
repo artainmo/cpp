@@ -10,7 +10,9 @@ Character::~Character()
 }
 
 Character::Character(Character const &to_copy)
-:name(to_copy.getName()), action_points(to_copy.getAP()), Weapon(to_copy.getWeapon()) {}
+{
+  *this = to_copy;
+}
 
 void Character::operator=(Character const &to_copy)
 {
@@ -42,7 +44,12 @@ void Character::attack(Enemy *enemy)
     enemy->takeDamage(Weapon->getDamage());
     if (enemy->getHP() < 1)
       delete enemy;
+    return ;
   }
+  if (Weapon == nullptr)
+    std::cout << "No weapon to attack" << std::endl;
+  else
+    std::cout << "Not enough APs to attack" << std::endl;
 }
 
 std::string const Character::getName() const

@@ -13,9 +13,11 @@ protected:
 
 public:
   Enemy(int hp, std::string const & type);
+  Enemy(const Enemy &to_copy);
   virtual ~Enemy();
   //Deleting a parent class through a pointer on the child class leads to an error at compilation
   //the solution is to use the virtual keyword on the destructor of the parent class
+  void operator=(const Enemy &to_copy);
 
   std::string const getType() const;
   int getHP() const;
