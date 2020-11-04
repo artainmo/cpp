@@ -57,7 +57,7 @@ void Character::equip(AMateria *m)
   material = material->first;
 }
 
-void Character::unequip(int idx)
+void Character::unequip(int idx) //Objects do not get deleted, so they need to be deleted in the function they got created
 {
   if (idx > 3)
     return ;

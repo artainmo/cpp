@@ -4,6 +4,7 @@
 #include <string>
 #include "ICharacter.hpp"
 
+//Character can take in 4 materias (powers)
 class Character: public ICharacter
 {
 private:

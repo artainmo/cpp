@@ -5,6 +5,7 @@
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
 
+//Class that stores and clones materias
 class MateriaSource: public IMateriaSource
 {
 private:

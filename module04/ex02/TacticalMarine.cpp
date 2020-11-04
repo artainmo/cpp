@@ -1,6 +1,6 @@
 #include "TacticalMarine.hpp"
 
-TacticalMarine::TacticalMarine()
+TacticalMarine::TacticalMarine() //Does not call the parent class constructor as it does not contain a constructor as it is not necessary
 {
   std::cout << "Tactical Marine ready for battle!" << std::endl;
 }

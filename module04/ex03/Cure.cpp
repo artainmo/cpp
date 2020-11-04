@@ -13,5 +13,5 @@ AMateria* Cure::clone() const
 void Cure::use(ICharacter& target)
 {
   _xp += 10; //_xp is set as protected element, meaning its child classes can access it
-  std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+  std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

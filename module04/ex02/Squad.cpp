@@ -109,6 +109,7 @@ void Squad::del()
   }
 }
 
+//A deepc opy means a copy on another memory address
 void Squad::deepcopy(Squad const &to_copy)
 {
   marines *iter;

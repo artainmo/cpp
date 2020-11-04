@@ -4,10 +4,11 @@
 #include "ISquad.hpp"
 #include "ISpaceMarine.hpp"
 
+//Squad class that takes pure virtual class Isquas as parent and contains a list of marines
 class Squad : public ISquad
 {
 private:
-  typedef struct s_marines
+  typedef struct s_marines //Simple list "ISpaceMarine members[n]" could have been used instead of chained list, where you destroy and reallocate each time new marine is added
   {
     struct s_marines *first;
     struct s_marines *next;

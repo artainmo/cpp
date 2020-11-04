@@ -4,6 +4,7 @@
 #include "AMateria.hpp"
 #include <string>
 
+//Pure virtual class for materiasource
 class IMateriaSource
 {
 public:

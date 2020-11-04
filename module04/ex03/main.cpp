@@ -6,10 +6,12 @@
 #include "Cure.hpp"
 #include "Ice.hpp"
 
+//Protect against not found weapon to use or unequip
+
 int main()
 {
   IMateriaSource* src = new MateriaSource();
-  src->learnMateria(new Ice());
+  src->learnMateria(new Ice()); //At src destruction will destroy the object given as parameter
   src->learnMateria(new Cure());
   ICharacter* me = new Character("me");
   AMateria* tmp;
@@ -19,9 +21,9 @@ int main()
   tmp2 = src->createMateria("cure");
   me->equip(tmp2);
   ICharacter* bob = new Character("bob");
-  me->use(0, *bob);
-  me->use(1, *bob);
-  std::cout << "~~Trying to access non-existing materials" << std::endl;
+  me->use(0, *bob); //Use materia ice, shoots ice bolt
+  me->use(1, *bob); //Use cure materia, heals wounds
+  std::cout << "~~Trying to access non-existing materials" << std::endl; //Should not output anything
   me->use(2, *bob);
   me->use(3, *bob);
   std::cout << "~~Trying to equip more than 4 weapons" << std::endl;
@@ -32,7 +34,7 @@ int main()
   me->equip(tmp);
   std::cout << "~~Accessing the 4th material" << std::endl;
   me->use(3, *bob);
-  std::cout << "~~Trying to access the 5th material" << std::endl;
+  std::cout << "~~Trying to access the 5th material" << std::endl; //Should not output anything
   me->use(4, *bob);
   std::cout << "~~Unequiping the first one" << std::endl;
   std::cout << "Before first : ";
@@ -42,7 +44,7 @@ int main()
   me->unequip(0);
   std::cout << "After unequipment first : ";
   me->use(0, *bob);
-  std::cout << "~~Accessing the 4th material after unequipment" << std::endl;
+  std::cout << "~~Accessing the 4th material after unequipment" << std::endl; //Should output nothing
   me->use(3, *bob);
   std::cout << "~~Unequipment second : " << std::endl;
   std::cout << "Before first : ";
@@ -56,10 +58,17 @@ int main()
   me->use(0, *bob);
   std::cout << "After second : ";
   me->use(1, *bob);
-  std::cout << "After third : " << std::endl;
+  std::cout << "After third : " << std::endl; //Should output nothing
   me->use(2, *bob);
+  std::cout << "~~Try unequip non-existing objects" << std::endl; //Should output nothing
+  me->unequip(3);
+  me->unequip(4);
+
+  std::cout << "~~Deleting all the objects" << std::endl; //Should output nothing
   delete bob;
   delete me;
   delete src;
+  delete tmp; //Because ICharacter creates a deep copy, should also be deleted
+  delete tmp2;
   return 0;
 }

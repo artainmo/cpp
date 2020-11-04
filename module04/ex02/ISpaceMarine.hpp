@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+//Is a pure virtual class, meaning it must be a parent class, it is used to form different kinds of marine classes
 class ISpaceMarine
 {
 public:

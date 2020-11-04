@@ -8,7 +8,7 @@ int main()
   ISpaceMarine* jim = new AssaultTerminator;
   ISquad* vlc = new Squad;
 
-  P(vlc->push(bob));
+  P(vlc->push(bob)); //Returns number of marines
   P(vlc->push(jim));
   for (int i = 0; i < vlc->getCount(); ++i)
   {
@@ -17,7 +17,7 @@ int main()
     cur->rangedAttack();
     cur->meleeAttack();
   }
-  delete vlc;
+  delete vlc; //Must delete its marines
 
   Squad *s = new Squad;
   Squad *s_copy = new Squad;
@@ -26,17 +26,16 @@ int main()
 
   P(s->push(john));
   P(s->push(beb));
-  P(s->push(beb));
-  P(s->push(nullptr));
-  //Same member or null member should not be added
+  P(s->push(beb)); //Should not add same object two times
+  P(s->push(nullptr)); //Should not add a null object
 
-  *s_copy = *s;
-
+  *s_copy = *s; //Verifying if copy is deep by looking if memory address is the same
   std::cout << s << std::endl;
   std::cout << s_copy << std::endl;
-  //Not on same memory space to show it is a deep copy
 
+  //Objects should be deleted two times, because deepcopies were made of squad objects, thus also deep copies of the marines they contain
   delete s;
   delete s_copy;
+
   return 0;
 }

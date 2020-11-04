@@ -6,6 +6,7 @@
 class AMateria;
 //solution to header problems with ICharacter - AMateria that both refer to each other and one need to refer first.
 
+//A pure virtual class for character class
 class ICharacter
 {
 public:

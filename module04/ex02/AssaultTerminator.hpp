@@ -4,6 +4,7 @@
 #include <iostream>
 #include "ISpaceMarine.hpp"
 
+//A child class of ISpaceMarine, that the squad class can contain
 class AssaultTerminator : public ISpaceMarine
 {
 public:
