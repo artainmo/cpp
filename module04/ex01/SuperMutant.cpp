@@ -11,12 +11,22 @@ SuperMutant::~SuperMutant()
   std::cout << "Aaargh..." << std::endl;
 }
 
+SuperMutant::SuperMutant(const SuperMutant &to_copy)
+:Enemy(to_copy.getHP(), to_copy.getType())
+{
+  std::cout << "Gaaah. Me want smash heads!" << std::endl;
+}
+
+void SuperMutant::operator=(const SuperMutant &to_copy)
+{
+  setHP(to_copy.getHP());
+  setType(to_copy.getType());
+}
+
 void SuperMutant::takeDamage(int _damage)
 {
   if (_damage < 3)
     return ;
   _damage -= 3;
-  hit_points -= _damage;
-  if (hit_points < 0)
-    hit_points = 0;
+  Enemy::takeDamage(_damage);
 }

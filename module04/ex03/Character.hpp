@@ -22,7 +22,7 @@ public:
   Character(std::string const & name);
   Character(Character const &to_copy);
   void operator=(Character const &to_copy);
-  ~Character();
+  virtual ~Character();
 
   std::string const &getName() const;
 	void	equip(AMateria *m);

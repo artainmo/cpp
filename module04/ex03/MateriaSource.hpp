@@ -19,8 +19,14 @@ private:
 public:
   MateriaSource();
   ~MateriaSource();
+  MateriaSource(const MateriaSource &to_copy);
+  void operator=(const MateriaSource &to_copy);
+
   void learnMateria(AMateria*);
   AMateria* createMateria(std::string const & type);
+
+  void deepcopy(const MateriaSource &to_copy);
+  void del();
 
 };
 

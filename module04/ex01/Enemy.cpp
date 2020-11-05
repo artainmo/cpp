@@ -34,3 +34,13 @@ void Enemy::takeDamage(int _damage)
   if (hit_points < 0)
     hit_points = 0;
 }
+
+void Enemy::setType(std::string _type)
+{
+  type = _type;
+}
+
+void Enemy::setHP(int _hp)
+{
+  hit_points = _hp;
+}

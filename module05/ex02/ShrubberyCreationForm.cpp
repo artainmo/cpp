@@ -1,5 +1,8 @@
 #include "ShrubberyCreationForm.hpp"
 
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &_target)
+:Form("ShrubberyCreationForm", 145, 137), target(_target) {}
+
 void ShrubberyCreationForm::Action() const
 {
   std::string filename;
@@ -23,30 +26,10 @@ void ShrubberyCreationForm::Action() const
   std::cout << filename << " has been created" << std::endl;
 }
 
-bool ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &to_copy)
+:Form("ShrubberyCreationForm", 145, 137), target(to_copy.getTarget()) {}
+
+std::string const &ShrubberyCreationForm::getTarget() const
 {
-  try
-  {
-    if (getSigne() == true)
-    {
-      if (executor.getGrade() <= getGrade_exec())
-      {
-        Action();
-        return true;
-      }
-      else
-        throw GradeTooLowException();
-    }
-    else
-      throw UnsignedException();
-  }
-  catch (GradeTooLowException &e)
-  {
-    e.detail();
-  }
-  catch (UnsignedException &e)
-  {
-    e.detail();
-  }
-  return false;
+  return target;
 }

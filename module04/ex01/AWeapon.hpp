@@ -4,9 +4,10 @@
 #include <iostream>
 #include <string>
 
-//This class is abstract because it contains one pure virtual function, also called an interface
+//This class is abstract/interface/pure virtual class because it contains one pure virtual function
 //abstract classes cannot be assigned to variables as a type, they can only act as a parent class, or it will create an error
 //If a child class does not override the abstract function, it becomes an abstract class too and thus gives error when used as variable type
+//Its childclasses contain constant values, thus coplien form, assignation/copy functions make no sense
 class AWeapon
 {
   private:
@@ -26,6 +27,9 @@ class AWeapon
     //First const makes sure value returned do not get trasnformed while second makes sure no values in class get changed inside the function
     int getAPCost() const;
     int getDamage() const;
+    void setAPCost(int);
+    void setDamage(int);
+    void setName(std::string);
 
     virtual void attack() const = 0;
     //Virtual means child classes with same function name override this function

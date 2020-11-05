@@ -9,7 +9,9 @@ class AssaultTerminator : public ISpaceMarine
 {
 public:
   AssaultTerminator();
-  ~AssaultTerminator();
+  virtual ~AssaultTerminator();
+  //Contains no variables thus nothing to copy, thus coplien form makes no sense
+
   ISpaceMarine* clone() const;
   void battleCry() const;
   void rangedAttack() const;

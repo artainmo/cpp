@@ -7,7 +7,9 @@ class PowerFist : public AWeapon
 {
 public:
   PowerFist();
-  ~PowerFist();
+  virtual ~PowerFist();
+  PowerFist(const PowerFist &to_copy);
+  void operator=(const PowerFist &to_copy);
 
   void attack() const;
   //Overrides the pure virtual function of AWeapon

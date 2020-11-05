@@ -1,34 +1,17 @@
 #include "PresidentialPardonForm.hpp"
 
+PresidentialPardonForm::PresidentialPardonForm(std::string const &_target)
+:Form("PresidentialPardonForm", 25, 5), target(_target) {}
+
 void PresidentialPardonForm::Action() const
 {
   std::cout << target << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 
-bool PresidentialPardonForm::execute(Bureaucrat const & executor) const
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &to_copy)
+:Form("PresidentialPardonForm", 25, 5), target(to_copy.getTarget()) {}
+
+std::string const &PresidentialPardonForm::getTarget() const
 {
-  try
-  {
-    if (getSigne() == true)
-    {
-      if (executor.getGrade() <= getGrade_exec())
-      {
-        Action();
-        return true;
-      }
-      else
-        throw GradeTooLowException();
-    }
-    else
-      throw UnsignedException();
-  }
-  catch (GradeTooLowException &e)
-  {
-    e.detail();
-  }
-  catch (UnsignedException &e)
-  {
-    e.detail();
-  }
-  return false;
+  return target;
 }

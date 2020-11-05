@@ -2,9 +2,10 @@
 
 
 Bureaucrat::Bureaucrat(int _grade, std::string const &_name)
-:name(_name)
+:name(_name), grade(150)
 {
   ExceptionGrade(_grade);
+  //If exception occurs grade is initialized to lowest 150 grade
 }
 
 
@@ -16,6 +17,11 @@ const std::string &Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
   return (grade);
+}
+
+void Bureaucrat::setGrade(int _grade)
+{
+  grade = _grade;
 }
 
 void Bureaucrat::Increment()
@@ -33,35 +39,41 @@ void operator<<(std::ostream &stream, Bureaucrat const &B)
     stream << B.getName() << " bureaucrat grade " << B.getGrade() << "." << std::endl;
 }
 
-
+//Sets new grade and verifies if in range
 void Bureaucrat::ExceptionGrade(int new_grade)
 {
-  try
+  try //Try scope contains throw keyword, throw keyword is followed by parameter and linked with catch scope that contains same parameter, in catch scope you can set what you want but usually if exception class is used, its error output function is used
   {
     if (new_grade > 150)
-      throw GradeTooLowException(new_grade);
+      throw GradeTooLowException();
     else if (new_grade < 1)
-      throw GradeTooHighException(new_grade);
+      throw GradeTooHighException();
     grade = new_grade;
   }
-  catch (GradeTooHighException &e)
+  catch (std::exception &e) //Is catchable by std::exception, as it has the std::exception as parent
   {
-    e.detail();
-    grade = e.grade;;
-  }
-  catch (GradeTooLowException &e)
-  {
-    e.detail();
-    grade = e.grade;;
+    e.what();
   }
 }
 
-void Bureaucrat::GradeTooHighException::detail() const
+const char *Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
 {
-  std::cout << "Grade too high exception" << std::endl;
+  std::cout << "Grade not in range exception: too low" << std::endl;
+  return (0);
 }
 
-void Bureaucrat::GradeTooLowException::detail() const
+const char *Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
 {
-  std::cout << "Grade too low exception" << std::endl;
+  std::cout << "Grade not in range exception: too high" << std::endl;
+  return (0);
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &to_copy)
+{
+  *this = to_copy;
+}
+
+void Bureaucrat::operator=(const Bureaucrat &to_copy) //Name must stay const
+{
+  setGrade(to_copy.getGrade());
 }

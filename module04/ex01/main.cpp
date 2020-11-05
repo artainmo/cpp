@@ -5,6 +5,10 @@
 #include "PowerFist.hpp"
 #include "RadScorpion.hpp"
 #include "SuperMutant.hpp"
+#include "MachineGun.hpp"
+#include "ShotGun.hpp"
+#include "Snake.hpp"
+#include "Spider.hpp"
 
 int main()
 {
@@ -14,9 +18,13 @@ int main()
 
   Enemy* b = new RadScorpion();
   SuperMutant *c = new SuperMutant();
+  Spider *sp = new Spider();
+  Snake *sn = new Snake();
 
   AWeapon* pr = new PlasmaRifle();
   AWeapon* pf = new PowerFist();
+  AWeapon* mg = new MachineGun();
+  AWeapon* sg = new ShotGun();
 
   std::cout << "~~~Character attacking RadScorpion~~~" << std::endl;
   me->attack(b);
@@ -41,6 +49,7 @@ int main()
 
 
   std::cout << "~~~Killing scorpion~~~" << std::endl;
+  std::cout << *me;
   me->attack(b);
   std::cout << "~~~Trying to attack SuperMutant~~~" << std::endl;
   me->attack(c);
@@ -60,4 +69,21 @@ int main()
   me->attack(c);
   me->attack(c);
   me->attack(c);
+  std::cout << "~~~Attacking Snake and Spider with MachineGun and ShotGun~~~" << std::endl;
+  me->equip(mg);
+  std::cout << *me;
+  me->attack(sn);
+  me->attack(sn);
+  std::cout << "Snake HP: " << sn->getHP() << std::endl;
+  me->recoverAP();
+  me->equip(sg);
+  me->attack(sp);
+  std::cout << "Spider HP: " << sp->getHP() << std::endl;
+
+  delete me;
+  delete sn;
+  delete pr;
+  delete pf;
+  delete mg;
+  delete sg;
 }

@@ -29,3 +29,18 @@ int AWeapon::getDamage() const
 {
   return (damage);
 }
+
+void AWeapon::setAPCost(int cost)
+{
+  shooting_cost = cost;
+}
+
+void AWeapon::setDamage(int _damage)
+{
+  damage = _damage;
+}
+
+void AWeapon::setName(std::string _name)
+{
+  name = _name;
+}

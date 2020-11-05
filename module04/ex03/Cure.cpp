@@ -12,6 +12,18 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-  _xp += 10; //_xp is set as protected element, meaning its child classes can access it
+  AMateria::use(target);
   std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
+
+Cure::Cure(const Cure &to_copy)
+:AMateria("cure")
+{
+  setXP(to_copy.getXP());
+}
+
+void Cure::operator=(const Cure &to_copy)
+{
+  //type is already set
+  setXP(to_copy.getXP());
 }

@@ -10,11 +10,14 @@ class RobotomyRequestForm : public Form
 private:
   std::string const target;
 public:
-  RobotomyRequestForm(std::string const &_target) : Form("RobotomyRequestForm", 72, 45), target(_target) {}
-  ~RobotomyRequestForm() {}
+  RobotomyRequestForm(std::string const &_target);
+  virtual ~RobotomyRequestForm() {}
+  RobotomyRequestForm(const RobotomyRequestForm &to_copy);
+  //No operator= because all variables are constant
 
   void Action() const;
-  bool execute(Bureaucrat const & executor) const;
+
+  std::string const &getTarget() const;
 };
 
 #endif

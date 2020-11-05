@@ -4,7 +4,7 @@
 #include "ISquad.hpp"
 #include "ISpaceMarine.hpp"
 
-//Squad class that takes pure virtual class Isquas as parent and contains a list of marines
+//Squad class that takes pure virtual class Isquad as parent and contains a list of marines
 class Squad : public ISquad
 {
 private:
@@ -19,7 +19,7 @@ private:
 
 public:
   Squad();
-  ~Squad();
+  virtual ~Squad();
   Squad(Squad const &to_copy);
   //A shallow copy has pointers pointing on same memory adress while a deep copy has pointers pointing on different memory adress
   void operator=(Squad const &to_copy);

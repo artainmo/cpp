@@ -3,13 +3,23 @@
 Mouse::Mouse(std::string named)
 :Victim(named)
 {
-  name = named;
   std::cout << "Pip Pip." << std::endl;
 }
 
 Mouse::~Mouse()
 {
   std::cout << "Piiieeep..." << std::endl;
+}
+
+Mouse::Mouse(const Mouse &to_copy)
+:Victim(to_copy.name)
+{
+  std::cout << "Pip Pip." << std::endl;
+}
+
+void Mouse::operator=(const Mouse &to_copy)
+{
+  name = to_copy.name;
 }
 
 void Mouse::getPolymorphed() const

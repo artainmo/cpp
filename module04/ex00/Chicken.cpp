@@ -3,13 +3,23 @@
 Chicken::Chicken(std::string named)
 :Victim(named)
 {
-  name = named;
   std::cout << "Cluck cluck." << std::endl;
 }
 
 Chicken::~Chicken()
 {
   std::cout << "Cluuuuck..." << std::endl;
+}
+
+Chicken::Chicken(const Chicken &to_copy)
+:Victim(to_copy.name)
+{
+  std::cout << "Cluck cluck." << std::endl;
+}
+
+void Chicken::operator=(const Chicken &to_copy)
+{
+  name = to_copy.name;
 }
 
 void Chicken::getPolymorphed() const

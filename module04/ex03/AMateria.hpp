@@ -11,7 +11,7 @@ class ICharacter;
 //Materia seems to come from a video game and means a power that a character can have
 class AMateria
 {
-protected:
+private:
   unsigned int _xp;
   std::string type;
 public:
@@ -22,6 +22,7 @@ public:
 
   std::string const & getType() const;
   unsigned int getXP() const;
+  void setXP(unsigned int xp);
   virtual AMateria* clone() const = 0;
   virtual void use(ICharacter& target);
 };

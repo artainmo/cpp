@@ -12,8 +12,8 @@ Sorcerer::~Sorcerer()
 }
 
 Sorcerer::Sorcerer(const Sorcerer &to_copy)
-:name(to_copy.name), title(to_copy.title)
 {
+  *this = to_copy;
   std::cout << name << ", " << title << ", is born!" << std::endl;
 }
 

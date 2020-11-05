@@ -8,7 +8,10 @@ class Cure : public AMateria
 {
 public:
   Cure();
-  ~Cure();
+  virtual ~Cure();
+  Cure(const Cure &to_copy);
+  void operator=(const Cure &to_copy);
+
   AMateria* clone() const;
   void use(ICharacter &target);
 };

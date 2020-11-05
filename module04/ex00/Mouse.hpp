@@ -7,7 +7,9 @@ class Mouse : public Victim
 {
 public:
   Mouse(std::string name);
-  ~Mouse();
+  virtual ~Mouse();
+  Mouse(const Mouse &to_copy);
+  void operator=(const Mouse &to_copy);
 
   void getPolymorphed() const;
 };

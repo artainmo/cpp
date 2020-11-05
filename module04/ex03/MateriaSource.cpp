@@ -10,14 +10,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::~MateriaSource()
 {
-  materials *tmp;
-
-  while (material != nullptr)
-  {
-    tmp = material;
-    material = material->next;
-    delete tmp;
-  }
+  del();
 }
 
 void MateriaSource::learnMateria(AMateria* m)
@@ -59,4 +52,43 @@ AMateria* MateriaSource::createMateria(std::string const & type)
     return (nullptr);
   }
   return (material->object->clone());
+}
+
+MateriaSource::MateriaSource(const MateriaSource &to_copy)
+{
+  *this = to_copy;
+}
+
+void MateriaSource::operator=(const MateriaSource &to_copy)
+{
+  del();
+  material = new materials;
+  material->first = nullptr;
+  material->object = nullptr;
+  material->next = nullptr;
+  deepcopy(to_copy);
+}
+
+void MateriaSource::del()
+{
+  materials *tmp;
+
+  while (material != nullptr)
+  {
+    tmp = material;
+    material = material->next;
+    delete tmp;
+  }
+}
+
+void MateriaSource::deepcopy(MateriaSource const &to_copy)
+{
+  materials *tmp;
+
+  tmp = to_copy.material;
+  while (tmp != nullptr)
+  {
+    learnMateria(tmp->object->clone());
+    tmp = tmp->next;
+  }
 }

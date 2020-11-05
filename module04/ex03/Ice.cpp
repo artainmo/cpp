@@ -12,6 +12,18 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-  _xp += 10; //_xp is set as protected element, meaning its child classes can access it
+  AMateria::use(target);
   std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+}
+
+Ice::Ice(const Ice &to_copy)
+:AMateria("cure")
+{
+  setXP(to_copy.getXP());
+}
+
+void Ice::operator=(const Ice &to_copy)
+{
+  //type is already set
+  setXP(to_copy.getXP());
 }

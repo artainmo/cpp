@@ -21,6 +21,7 @@ Character::Character(Character const &to_copy)
 
 void Character::operator=(Character const &to_copy)
 {
+  name = to_copy.getName();
   del();
   material = new materials;
   material->first = nullptr;

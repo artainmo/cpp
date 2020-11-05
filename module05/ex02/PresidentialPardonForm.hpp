@@ -8,11 +8,14 @@ class PresidentialPardonForm : public Form
 private:
   std::string const target;
 public:
-  PresidentialPardonForm(std::string const &_target) : Form("PresidentialPardonForm", 25, 5), target(_target) {}
-  ~PresidentialPardonForm() {}
+  PresidentialPardonForm(std::string const &_target);
+  virtual ~PresidentialPardonForm() {}
+  PresidentialPardonForm(const PresidentialPardonForm &to_copy);
+  //No operator= because all variables are constant
 
   void Action() const;
-  bool execute(Bureaucrat const & executor) const;
+
+  std::string const &getTarget() const;
 };
 
 #endif

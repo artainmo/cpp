@@ -1,5 +1,8 @@
 #include "RobotomyRequestForm.hpp"
 
+RobotomyRequestForm::RobotomyRequestForm::RobotomyRequestForm(std::string const &_target)
+:Form("RobotomyRequestForm", 72, 45), target(_target) {}
+
 void RobotomyRequestForm::Action() const
 {
   int i;
@@ -13,30 +16,10 @@ void RobotomyRequestForm::Action() const
     std::cout << target << " failure, has not been robotomized" << std::endl;
 }
 
-bool RobotomyRequestForm::execute(Bureaucrat const & executor) const
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &to_copy)
+:Form("RobotomyRequestForm", 72, 45), target(to_copy.getTarget()) {}
+
+std::string const &RobotomyRequestForm::getTarget() const
 {
-  try
-  {
-    if (getSigne() == true)
-    {
-      if (executor.getGrade() <= getGrade_exec())
-      {
-        Action();
-        return true;
-      }
-      else
-        throw GradeTooLowException();
-    }
-    else
-      throw UnsignedException();
-  }
-  catch (GradeTooLowException &e)
-  {
-    e.detail();
-  }
-  catch (UnsignedException &e)
-  {
-    e.detail();
-  }
-  return false;
+  return target;
 }

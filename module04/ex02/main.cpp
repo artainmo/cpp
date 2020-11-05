@@ -17,7 +17,7 @@ int main()
     cur->rangedAttack();
     cur->meleeAttack();
   }
-  delete vlc; //Must delete its marines
+  delete vlc; //Must delete its marines later on
 
   Squad *s = new Squad;
   Squad *s_copy = new Squad;

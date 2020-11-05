@@ -3,8 +3,18 @@
 Peon::Peon(std::string named)
 :Victim(named)
 {
-  name = named;
   std::cout << "Zog zog." << std::endl;
+}
+
+Peon::Peon(const Peon &to_copy)
+:Victim(to_copy.name)
+{
+  std::cout << "Zog zog." << std::endl;
+}
+
+void Peon::operator=(const Peon &to_copy)
+{
+  name = to_copy.name;
 }
 
 Peon::~Peon()

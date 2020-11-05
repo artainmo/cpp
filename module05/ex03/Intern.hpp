@@ -9,11 +9,6 @@
 
 class Intern
 {
-public:
-  Intern() {}
-  ~Intern() {}
-  Form *makeForm(std::string const &form_name, std::string const &form_target);
-
 private:
   typedef struct s_forms
   {
@@ -23,6 +18,12 @@ private:
     //consist first of the return type of the function pointed to, second to the name of the function pointer and third to its arguments
     //Possible to allocate struct in c++, because it works similar to a class, in the stack memory or heap, with direct access to the different structs through an index
   } t_forms;
+
+public:
+  Intern() {}
+  ~Intern() {}
+  Form *makeForm(std::string const &form_name, std::string const &form_target);
+  //Because does not contain variables not possible to copy or assign
 };
 
 #endif

@@ -1,25 +1,7 @@
 #include "Form.hpp"
 
-Form::Form(std::string const &_name, int _grade_sign,int _grade_exec)
-:Bureaucrat(), name(_name), signe(false), grade_sign(_grade_sign), grade_exec(_grade_exec)
-{
-  try
-  {
-    if (grade_sign > 150)
-      throw GradeTooLowException(grade_sign);
-    else if (grade_sign < 1)
-      throw GradeTooHighException(grade_sign);
-  }
-  catch (GradeTooLowException &e)
-  {
-    e.detail();
-  }
-  catch(GradeTooHighException &e)
-  {
-    e.detail();
-  }
-
-}
+Form::Form(std::string const &_name, int _grade_sign, int _grade_exec)
+: name(_name), signe(false), grade_sign(ExceptionGrade(_grade_sign)), grade_exec(ExceptionGrade(_grade_exec)) {}
 
 void operator<<(std::ostream &stream, Form &F)
 {
@@ -31,41 +13,88 @@ void operator<<(std::ostream &stream, Form &F)
   stream << "grade to sign: " << F.getGrade_sign() << ", grade to execute: " << F.getGrade_exec() << std::endl;
 }
 
-std::string const &Form::getName()
+std::string const &Form::getName() const
 {
   return (name);
 }
 
-bool Form::getSigne()
+bool Form::getSigne() const
 {
   return (signe);
 }
 
-int Form::getGrade_sign()
+int Form::getGrade_sign() const
 {
   return(grade_sign);
 }
 
-int Form::getGrade_exec()
+int Form::getGrade_exec() const
 {
   return(grade_exec);
 }
 
 void Form::beSigned(Bureaucrat const &B)
 {
+  if (ExceptionGrade(B.getGrade(), grade_sign))
+  {
+      signe = true;
+      B.signForm(*this);
+  }
+  else
+    B.signForm(*this);
+}
+
+int Form::ExceptionGrade(int new_grade)
+{
+  try //Try scope contains throw keyword, throw keyword is followed by parameter and linked with catch scope that contains same parameter, in catch scope you can set what you want but usually if exception class is used, its error output function is used
+  {
+    if (new_grade > 150)
+      throw GradeTooLowException();
+    else if (new_grade < 1)
+      throw GradeTooHighException();
+    return new_grade;
+  }
+  catch (std::exception &e) //Is catchable by std::exception, as it has the std::exception as parent
+  {
+    e.what();
+    return 1; //If invalid grade set to one so that it does not get executed or signed when it should not
+  }
+}
+
+bool Form::ExceptionGrade(int grade, int minimum_grade)
+{
   try
   {
-    if (B.getGrade() <= grade_sign)
-    {
-      signe = true;
-      B.signForm(true, name);
-    }
-    else
-      throw GradeTooLowException(B.getGrade());
+    if (grade > minimum_grade)
+      throw GradeTooLowException();
   }
-  catch(GradeTooLowException &e)
+  catch (std::exception &e)
   {
-    e.detail();
-    B.signForm(false, name);
+    e.what();
+    return false;
   }
+  return true;
+}
+
+const char *Form::GradeTooLowException::what() const _NOEXCEPT
+{
+  std::cout << "Grade not in range exception: too low" << std::endl;
+  return (0);
+}
+
+const char *Form::GradeTooHighException::what() const _NOEXCEPT
+{
+  std::cout << "Grade not in range exception: too high" << std::endl;
+  return (0);
+}
+
+Form::Form(const Form &to_copy)
+: name(to_copy.getName()), grade_sign(to_copy.getGrade_sign()), grade_exec(to_copy.getGrade_exec())
+{
+  *this = to_copy;
+}
+
+void Form::operator=(const Form &to_copy)
+{
+  signe = to_copy.getSigne(); //All the rest are constant members and cannot be changed value after initiliazation
 }

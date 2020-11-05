@@ -16,6 +16,7 @@ int main()
   ICharacter* me = new Character("me");
   AMateria* tmp;
   AMateria* tmp2;
+
   tmp = src->createMateria("ice");
   me->equip(tmp);
   tmp2 = src->createMateria("cure");
@@ -64,9 +65,18 @@ int main()
   me->unequip(3);
   me->unequip(4);
 
+  std::cout << "~~Verify the deep copy"<< std::endl;
+  ICharacter *me_copy = new Character("me_copy");
+  *me_copy = *me; //Verifying if copy is deep by looking if memory address is the same
+  std::cout << me << std::endl;
+  std::cout << me_copy << std::endl;
+
+  //Objects should be deleted two times, because deepcopies were made of materials, if no deepcopy should segfault
+  delete me;
+  delete me_copy;
+
   std::cout << "~~Deleting all the objects" << std::endl; //Should output nothing
   delete bob;
-  delete me;
   delete src;
   delete tmp; //Because ICharacter creates a deep copy, should also be deleted
   delete tmp2;

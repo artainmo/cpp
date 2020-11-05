@@ -13,7 +13,7 @@ AMateria::AMateria(AMateria const &to_copy)
 
 void AMateria::operator=(AMateria const &to_copy)
 {
-  _xp = to_copy._xp;
+  _xp = to_copy.getXP();
 }
 
 std::string const & AMateria::getType() const //Returns the materia type
@@ -30,4 +30,9 @@ void AMateria::use(ICharacter& target)
 {
   (void)target; //Use it for no warning of non-used variable
   _xp += 10;
+}
+
+void AMateria::setXP(unsigned int xp)
+{
+  _xp = xp;
 }

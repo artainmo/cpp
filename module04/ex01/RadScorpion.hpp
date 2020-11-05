@@ -7,7 +7,9 @@ class RadScorpion : public Enemy //Uses the takedamage virtual function from ene
 {
 public:
   RadScorpion();
-  ~RadScorpion();
+  virtual ~RadScorpion();
+  RadScorpion(const RadScorpion &to_copy);
+  void operator=(const RadScorpion &to_copy);
 };
 
 #endif
