@@ -1,8 +1,7 @@
 all:
-	clang++ -Wall -Wextra -Werror *.cpp
+	clang++ -Wall -Wextra -Werror iter.cpp
 
-clean:
+fclean:
 	rm -f a.out
 
-re:
-	clean all
+re: fclean all

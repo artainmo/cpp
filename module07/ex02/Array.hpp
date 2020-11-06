@@ -4,6 +4,7 @@
 #include <iostream>
 #include <exception>
 #include <cstdlib>
+#include <csignal>
 
 #define P(X) std::cout << X << std::endl;
 
@@ -19,18 +20,17 @@ private:
   class out_of_range : std::exception
   {
   public:
-    out_of_range() {}
-    void detail();
+    const char* what() const _NOEXCEPT;
   };
 public:
   Array(): arr(nullptr), length(0) {}
   ~Array();
   Array(unsigned int n);
   Array(Array const &to_copy);
-
   void operator=(Array const &to_copy);
-  T &operator[](int n) const;
 
+  T &operator[](int n); //Used by non-const classes
+  const T &operator[](int n) const; //Used by const classes, by returning a constant value creates compilation error when trying to change value
   unsigned int size() const;
 
 };
@@ -38,7 +38,7 @@ public:
 template<typename T>
 Array<T>::~Array()
 {
-  delete arr;
+  delete [] arr; //Delete all the elements, deleting null creates no error
 }
 
 template<typename T>
@@ -50,16 +50,16 @@ Array<T>::Array(unsigned int n)
 
 template<typename T>
 Array<T>::Array(Array const &to_copy)
+:arr(nullptr), length(0)
 {
-  arr = to_copy.arr;
-  length = to_copy.length;
+  *this = to_copy;
 }
 
 template<typename T>
-void Array<T>::operator=(Array const &to_copy)
+void Array<T>::operator=(Array const &to_copy) //Creation of deepcopy or copy on a separate memory address
 {
   if (arr != nullptr)
-    delete arr;
+    delete [] arr;
   arr = new T[to_copy.length];
   for (unsigned int i = 0; i < to_copy.length ; i++)
     arr[i] = to_copy.arr[i];
@@ -67,7 +67,7 @@ void Array<T>::operator=(Array const &to_copy)
 }
 
 template<typename T>
-T &Array<T>::operator[](int n) const
+T &Array<T>::operator[](int n)
 {
   try
   {
@@ -76,8 +76,24 @@ T &Array<T>::operator[](int n) const
   }
   catch (out_of_range &e)
   {
-    e.detail();
-    exit(1);
+    e.what();
+    raise(SIGSEGV);
+  }
+  return (arr[n]);
+}
+
+template<typename T>
+const T &Array<T>::operator[](int n) const
+{
+  try
+  {
+    if (n < 0 || (unsigned int)n >= length)
+      throw out_of_range();
+  }
+  catch (out_of_range &e)
+  {
+    e.what();
+    raise(SIGSEGV);
   }
   return (arr[n]);
 }
@@ -89,10 +105,10 @@ unsigned int Array<T>::size() const
 }
 
 template<typename T>
-void Array<T>::out_of_range::detail()
+const char *Array<T>::out_of_range::what() const _NOEXCEPT
 {
-  std::cout << "\nException for out of range array" << std::endl;
+  std::cout << "Exception for out of range array... Calling SIGSEGV!\n";
+  return 0;
 }
-
 
 #endif
