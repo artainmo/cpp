@@ -13,13 +13,11 @@ Base * generate()
     return (new A());
   else if (r[i] == 'b')
     return (new B());
-  else if (r[i] == 'c')
-    return (new C());
   else
-    return (nullptr);
+    return (new C());
 }
 
-void identify_from_pointer(Base * p)
+void identify_from_pointer(Base *p)
 {
   if (dynamic_cast<A *>(p) != nullptr)
     std::cout << "Identify from pointer: A" << std::endl;
@@ -27,22 +25,21 @@ void identify_from_pointer(Base * p)
     std::cout << "Identify from pointer: B" << std::endl;
   else if (dynamic_cast<C *>(p) != nullptr)
     std::cout << "Identify from pointer: C" << std::endl;
-}//dynamic_cast is very practical for polymorphic classes, to detect what child class a class is, it will return a nullptr if cast is considered faulty
-//Polymorphic classes are base classes that can take up many forms through child classes
+}
+//dynamic_cast is very practical for polymorphic classes, to detect what child class a class is, it will return a nullptr if cast is considered faulty
+//Polymorphic classes are base/parent classes that can take up many forms through child classes, trying to cast to sister classes is impossible
 
 void identify_from_reference(Base &p)
 {
-  Base *base;
-
-  base = &p;
-  if (dynamic_cast<A*>(base) != nullptr)
+  if (dynamic_cast<A*>(&p) != nullptr)
     std::cout << "Identify from reference: A" << std::endl;
-  else if (dynamic_cast<B*>(base) != nullptr)
+  else if (dynamic_cast<B*>(&p) != nullptr)
     std::cout << "Identify from reference: B" << std::endl;
-  else if (dynamic_cast<C*>(base) != nullptr)
+  else if (dynamic_cast<C*>(&p) != nullptr)
     std::cout << "Identify from reference: C" << std::endl;
-} //Other technique with references consists of catching errors with error handling if not correct cast, this technique of giving address to a pointer is simpler
-  //With pointers dynamic_cast returns a nullptr on error, but with references it gives compile-time errors.
+}
+//dynamic_cast returns compilation errors if address is not given, but value the address points to. So you need to give the address using reference to make it work as intended 
+
 
 int main()
 {

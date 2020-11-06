@@ -9,7 +9,7 @@
 
 #define P(x) std::cout << x << std::endl;
 
-void type_conversions_nums(long double const &biggest_type)
+void type_conversions_nums(double const &biggest_type) //Do the type conversions
 {
  	if (biggest_type > CHAR_MAX || biggest_type < CHAR_MIN || std::isinf(biggest_type) || std::isnan(biggest_type))
 		std::cout << "char : impossible" << std::endl;
@@ -29,7 +29,7 @@ void type_conversions_nums(long double const &biggest_type)
 	//"literal must belong to one of the following a scalar types: char, int, float or double" -> so no overflow possible on double cast
 }
 
-bool scalar_test(std::string const &arg)
+bool scalar_test(std::string const &arg)//Verifies if it is an accepted scalar
 {
 	for (int i = 0; i < (int)arg.length(); i++)
 		if (!std::isdigit(arg[i]) && arg[i] != '.' && !(i == 0 && (arg[i] == '-' || arg[i] == '+')))
@@ -37,20 +37,22 @@ bool scalar_test(std::string const &arg)
 	return (true);
 }
 
-bool detect_num(std::string const &arg, long double &biggest_type)
+bool detect_num(std::string const &arg, long double &biggest_type) //Verifies if it is an accepted scalar
 {
 	std::stringstream str_conv(arg);
 
 	if (arg.compare("-inf") == 0 || arg.compare("+inf") == 0
 				|| arg.compare(0, 3, "nan") == 0 || scalar_test(arg))
 	{
-				str_conv >> biggest_type;
-				return (true);
+				str_conv >> biggest_type; //From string to long double using stringstreams
+        if ((biggest_type <= DBL_MAX && biggest_type >= -DBL_MAX) || arg.compare("-inf") == 0 || arg.compare("+inf") == 0 || arg.compare(0, 3, "nan") == 0) //Must not overflow a double but stil accept inf and nan
+				    return (true);
 	}
 	return (false);
 }
 
 //Only takes in !scalar types!, thus error if not a scalar | -inff, +inff and nanf are sole accepted pseudo literals
+//Scalar type must belong to int, float or double
 int main(int argc, char **argv)
 {
 	std::string arg;
@@ -62,15 +64,18 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	arg = argv[1];
-	if (arg[arg.length() - 1] == 'f' && !((arg.compare("-inf") == 0 || arg.compare("+inf") == 0)))
+	if (arg[arg.length() - 1] == 'f' && !((arg.compare("-inf") == 0 || arg.compare("+inf") == 0))) //Pop back if f at end of float
 		arg.pop_back();
 	biggest_type = 0;
-	if (detect_num(arg, biggest_type) == true)
+	if (detect_num(arg, biggest_type) == true) //Send error message if not an accepted input
 		type_conversions_nums(biggest_type);
 	else
 	{
-		std::cout << "arg is not a scalar, -inf, +inf and nan are sole accepted pseudo literals" << std::endl;
+		std::cout << "arg is not an int, float or double, -inf, +inf and nan are sole accepted pseudo literals" << std::endl;
 		return (1);
 	}
 	return (0);
 }
+
+//-2147483648.44 max negative int + 0,44
+//To test with values greater than MAX double, add multiple lines of 0000s

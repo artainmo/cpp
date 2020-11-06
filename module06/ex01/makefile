@@ -1,7 +1,7 @@
 all:
-	clang++ -Wall -Wextra -Werror *.cpp
+	clang++ -Wall -Wextra -Werror main.cpp
 
-re: clean all
+re: fclean all
 
-clean:
+fclean:
 	rm -rf a.out
