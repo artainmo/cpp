@@ -15,30 +15,11 @@ private:
 
 public:
   elem_not_found(T _elem, T1 _cont): elem(_elem), cont(_cont) {}
-  void detail()
+  const char *what() const _NOEXCEPT
   {
     std::cout << elem << " not found" <<  std::endl;
+    return 0;
   }
 };
-
-template<typename T>
-void easyfind(T cont, int to_find)
-{
-  typename T::iterator ptr;
-
-  try
-  {
-    ptr = std::find(cont.begin(), cont.end(), to_find);
-    if (ptr == cont.end() && *(cont.end()) != to_find)
-      throw elem_not_found<int, T>(to_find, cont);
-    else
-      std::cout << to_find << " found at position " << ptr - cont.begin() + 1 << std::endl;
-  }
-  catch (elem_not_found<int, T> &e)
-  {
-    e.detail();
-  }
-}
-//Function inside header because it is a template function
 
 #endif

@@ -10,7 +10,7 @@ class Span
 {
 private:
   unsigned int size;
-  std::vector<int> arr;
+  std::vector<int> arr; //We use the stl container with the most options, so that it can directly so what the Array container needs to do
   //vector is a perturbing name, it is not a mathematical vector, it simply is  a dynamic array
   //std::vectors do not need to be initialized with a certain size from begin contrary to std::array
   //std::array will keep a constant/static size, while vector is an  array with a dynamic size, stored in heap
@@ -18,24 +18,27 @@ private:
   class out_of_range : public std::exception
   {
   public:
-    out_of_range() {}
-    void detail() {std::cout << "Out of range exception" << std::endl;}
+    const char *what() const _NOEXCEPT;
   };
   class no_span : public std::exception
   {
   public:
-    no_span() {}
-    void detail() {std::cout << "Array size is too small for a span" << std::endl;}
+    const char *what() const _NOEXCEPT;
   };
 
 public:
   Span(unsigned int _size);
   ~Span() {}
+  Span(const Span &to_copy);
+  void operator=(const Span &to_copy);
 
   void addNumber(int n);
   void addRange(unsigned int begin, unsigned int end);
   int shortestSpan();
   int longestSpan();
+
+  unsigned int getSize();
+  std::vector<int> getArray();
 };
 
 #endif
