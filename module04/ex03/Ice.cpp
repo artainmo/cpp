@@ -17,7 +17,7 @@ void Ice::use(ICharacter& target)
 }
 
 Ice::Ice(const Ice &to_copy)
-:AMateria("cure")
+:AMateria("ice")
 {
   setXP(to_copy.getXP());
 }
