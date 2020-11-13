@@ -16,14 +16,3 @@
 # https://cdn.intra.42.fr/pdf/pdf/13176/en.subject.pdf
 # module08
 # https://cdn.intra.42.fr/pdf/pdf/13180/en.subject.pdf
-
-Verified
-0 --
-1 --
-2 --
-3 --
-4 --
-5 -
-6 -
-7 -
-8 -
