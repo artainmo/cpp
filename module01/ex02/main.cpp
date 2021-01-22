@@ -22,4 +22,4 @@ int main()
   randomChump(); //Stack allocated object does not need delete keyword, after function scope gets automatically destroyed
 }
 //In cpp stack is used primarily, it is faster and no risk of memory leaks. With reference to access the address stack memrory can be used accross functions
-//The only advantages of heap allocation are more memory storage, threads share heap memory, returns from a function without copy
+//The only advantages of heap allocation are more memory storage, threads share heap memory
