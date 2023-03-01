@@ -1,4 +1,4 @@
-# cpp
+# cp
 
 ## module00
 42 school [subject](https://cdn.intra.42.fr/pdf/pdf/13806/en.subject.pdf).
